@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<section class="container">
+
+		<section class="container__content">
+
+			<div class="header">
+				<form class="search" action="#">
+					<input type="text" name="search" placeholder="Search" class="search-bar">
+				</form>
+			</div>
+
+			<div class="navbar">
+				<span>Sequence</span>
+				<span>Bar Code</span>
+				<span>Product</span>
+				<span>Cost</span>
+				<span>Selling</span>
+				<span>Action</span>
+				<span>Options</span>
+			</div>
+
+			<div class="content">
+				{%  for items in user.items%}
+					<div class="content__info">
+						<div>{{ items.id }}</div>
+						<div>{{ items.bar_code }}</div>
+						<div>{{ items.product }}</div>
+						<div>Php {{ items.cost }}</div>
+						<div>{{ items.selling }}</div>
+						<div>{{ items.action }}</div>
+						<div class="info__options">
+							<button>Update</button>
+							<a href="{{ url_for('views.delete', id=items.id) }}" class="delete">Delete</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="footer">
+				<div class="add-product">
+					<img src="{{ url_for('static', filename='img/add.svg') }}">
+					<span>Add Product</span>
+				</div>
+			</div>
+
+		</section>
+
+		<div class="modal-popup-add-product">
+			<div class="add__product">
+				<form class="product" method="POST">
+					<input type="text" name="bar_code" class="bar_code" placeholder="Enter Bar Code">
+					<input type="text" name="product" class="product" placeholder="Enter Product Name">
+					<input type="number" name="cost" step="any" class="cost" placeholder="Enter Cost">
+					<input type="number" name="selling" class="selling" placeholder="Enter Selling">
+					<input type="text" name="action" class="action" placeholder="Enter Action">
+					<input type="submit" name="add" class="add" value="Add Product">
+				</form>
+			</div>
+		</div>
+
+	</section>
+
+{% endblock content %}

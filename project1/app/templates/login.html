@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	<section class="container">
+		<!-- LOGIN ACCOUNT -->
+		<div class="content-header-login">
+			<form class="header_login-form" method="POST">	
+				<span class="form__title">
+					Login
+				</span>
+				<input type="text" name="username" placeholder="Enter Username">
+				<input type="password" name="password" placeholder="Enter Password">
+				<input type="submit" name="Login" value="Submit">
+			</form>
+		</div>
+
+		<!-- REGISTER ACCOUNT -->
+		<div class="content-header-register">
+			<form class="header_login-form" method="POST">	
+				<span class="form__title">
+					Register
+				</span>
+			</form>
+		</div>
+
+	</section>
+
+{% endblock content %}

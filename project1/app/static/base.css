@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+:root{
+
+	/*Colors*/
+	--black: #4D455D;
+	--red: #E96479;
+	--white: #F1F1F1;
+	--lime: #7DB9B6;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+*{
+	font-family: 'Open Sans';
+	/*outline: 1px solid green;*/
+	box-sizing: border-box;
+	margin: 0;
+}

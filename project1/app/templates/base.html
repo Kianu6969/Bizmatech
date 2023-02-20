@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{{ title }}</title>
+
+	{% if title == 'Login Page' %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+	{% elif title == 'Home Page' %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+	{% endif %}
+	
+</head>
+<body>
+
+	{% block content %}
+	{% endblock content %}
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/base.js') }}"></script>
+</body>
+</html>
