@@ -5,11 +5,21 @@
 	<section class="container">
 
 		<section class="container__content">
-
+			
 			<div class="header">
-				<form class="search" action="#">
+				<i style="color: white; font-style: normal;">{{ session_user }}</i>
+				<form class="search" action="" method="POST">
 					<input type="text" name="search" placeholder="Search" class="search-bar">
+					<input type="submit" name="search-bar" style="display: none;" value="Search">
 				</form>
+				{% with messages = get_flashed_messages() %}
+				  {% if messages %}
+				    {% for message in messages %}
+				      <i class="alert">{{ message }}</i>
+				    {% endfor %}
+				  {% endif %}
+				{% endwith %}
+				{% block body %}{% endblock %}
 			</div>
 
 			<div class="navbar">
@@ -23,20 +33,31 @@
 			</div>
 
 			<div class="content">
-				{%  for items in user.items%}
-					<div class="content__info">
-						<div>{{ items.id }}</div>
-						<div>{{ items.bar_code }}</div>
-						<div>{{ items.product }}</div>
-						<div>Php {{ items.cost }}</div>
-						<div>{{ items.selling }}</div>
-						<div>{{ items.action }}</div>
-						<div class="info__options">
-							<button>Update</button>
-							<a href="{{ url_for('views.delete', id=items.id) }}" class="delete">Delete</a>
+				{% if items != None %}
+					{%  for item in items %}
+					<!-- Modal Update -->
+						<div class="modal-container-update">
+							<div class="update-popup">
+								<div>{{ item.product }}</div>
+							</div>
 						</div>
-					</div>
-				{% endfor %}
+						<div class="content__info">
+							<div>{{ item.id }}</div>
+							<div>{{ item.bar_code }}</div>
+							<div>{{ item.product }}</div>
+							<div>Php {{ item.cost }}</div>
+							<div>{{ item.selling }}</div>
+							<div>{{ item.action }}</div>
+							<div class="info__options">
+								<button class="update">Update</button>
+								<a href="{{ url_for('views.delete', id=item.id) }}" class="delete">Delete</a>
+							</div>
+						</div>
+					{% endfor %}
+
+				{% else %}
+					<span>None</span>
+				{% endif %}
 			</div>
 
 			<div class="footer">
@@ -48,14 +69,18 @@
 
 		</section>
 
+		<!-- Modal Pop-up -->
+
 		<div class="modal-popup-add-product">
 			<div class="add__product">
+				<span>Add Product</span>
+				<span class="close_btn">+</span>
 				<form class="product" method="POST">
-					<input type="text" name="bar_code" class="bar_code" placeholder="Enter Bar Code">
-					<input type="text" name="product" class="product" placeholder="Enter Product Name">
-					<input type="number" name="cost" step="any" class="cost" placeholder="Enter Cost">
-					<input type="number" name="selling" class="selling" placeholder="Enter Selling">
-					<input type="text" name="action" class="action" placeholder="Enter Action">
+					<input type="text" name="bar_code" class="bar_code" placeholder="Enter Bar Code" required>
+					<input type="text" name="product" class="product" placeholder="Enter Product Name" required>
+					<input type="number" name="cost" step="any" class="cost" placeholder="Enter Cost" required>
+					<input type="number" name="selling" class="selling" placeholder="Enter Selling" required>
+					<input type="text" name="action" class="action" placeholder="Enter Action" required>
 					<input type="submit" name="add" class="add" value="Add Product">
 				</form>
 			</div>

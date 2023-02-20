@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, request, redirect, flash
+from flask import Blueprint, render_template, url_for, request, redirect, flash, session
 from app.models import User
 
 auth = Blueprint('auth', __name__)
@@ -11,8 +11,12 @@ def login():
 		password = request.form.get('password')
 		user = User.query.filter_by(username=name, password=password).first()
 
+
 		if user:
-			flash('You have logged in!')
+			session['user'] = user.username
+			session_user = session['user']
+			flash(f'You have logged in as {session_user}!')
+			
 			return redirect(url_for('views.home'))
 
 		else:
