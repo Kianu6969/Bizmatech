@@ -15,24 +15,28 @@ closeBtn.addEventListener('click', function(){
 
 // Update
 
-const update = document.querySelector('.modal-container-update');
-const updateBtn = document.querySelector('.update');
+const update = document.getElementsByClassName('modal-container-update');
+const updateBtn = document.getElementsByClassName('update');
 let toggle = false;
 
-updateBtn.addEventListener('click', function(){
+
+for(let x = 0; x < updateBtn.length; x++){
+	updateBtn[x].addEventListener('click', function(){
 
 	if (toggle == false) {
-		updateBtn.textContent = 'close';
-		updateBtn.style.background = 'green';
-		update.style.display = 'flex';
+		updateBtn[x].textContent = 'close';
+		updateBtn[x].style.background = 'green';
+		update[x].style.display = 'flex';
 		toggle = true;
 	}
 	else{
-		updateBtn.textContent = 'update'
-		updateBtn.style.background = '#4D455D';
-		update.style.display = 'none';
+		updateBtn[x].textContent = 'update'
+		updateBtn[x].style.background = '#4D455D';
+		update[x].style.display = 'none';
 		toggle = false;
 	}
 	
 });
+}
+
 
