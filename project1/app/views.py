@@ -21,7 +21,6 @@ def home():
 		selling = request.form.get('selling')
 		action = request.form.get('action')
 		
-
 		if product != '' and bar_code != '' and cost != '' and selling != '' and action != '':
 			new_item = Item(bar_code=bar_code, product=product, cost=cost, selling=selling, action=action, user=user)
 			db.session.add(new_item)
@@ -39,6 +38,20 @@ def home():
 			items = Item.query.filter_by(user_id = user.id).order_by(desc(Item.id))
 		elif search != '':
 			items = Item.query.filter_by(user_id = user.id, product=search)
+
+	# Update Product
+	elif request.method == 'POST' and request.form.get('submit-update'):
+		id_product = request.form.get('id-update')
+		product_update = Item.query.filter_by(id=id_product).first()
+
+		product_update.bar_code = request.form.get('bar_code-update')
+		product_update.product = request.form.get('product-update')
+		product_update.cost = request.form.get('cost-update')
+		product_update.selling = request.form.get('selling-update')
+		product_update.action = request.form.get('action-update')
+		db.session.commit()
+		return redirect('home')
+
 
 	return render_template('home.html', title='Home Page', user=user, items=items, session_user = session['user'])
 

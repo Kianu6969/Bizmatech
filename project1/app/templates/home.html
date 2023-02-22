@@ -38,9 +38,19 @@
 					<!-- Modal Update -->
 						<div class="modal-container-update">
 							<div class="update-popup">
-								<div>{{ item.product }}</div>
+								<form class="form-update" method="POST" action="#">
+									<input type="text" name="id-update" value="{{item.id}}" readonly>
+									<input type="text" name="bar_code-update" value="{{item.bar_code}}">
+									<input type="text" name="product-update" value="{{item.product}}">
+									<input type="number" step="any" name="cost-update" value="{{item.cost}}">
+									<input type="number" name="selling-update" value="{{item.selling}}">
+									<input type="text" name="action-update" value="{{item.action}}">
+									<input type="submit" name="submit-update" value="Update">
+								</form>
 							</div>
 						</div>
+
+						<!-- Product Content Information -->
 						<div class="content__info">
 							<div>{{ item.id }}</div>
 							<div>{{ item.bar_code }}</div>

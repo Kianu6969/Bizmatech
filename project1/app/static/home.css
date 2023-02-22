@@ -173,7 +173,7 @@
 .add__product{
 	position: relative;
 	width: 30%;
-	height: 50%;
+	height: auto;
 	background: var(--white);
 	box-shadow: 3px 3px 5px 2px var(--black);
 	z-index: 10;
@@ -204,6 +204,7 @@
 	color: var(--white);
 	cursor: pointer;
 	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 .close_btn{
@@ -216,7 +217,41 @@
 
 /* Modal pop-up Update */
 .modal-container-update{
-	display: none;
-	background: red;
-	height: 10vh;
+	border-radius: 0.6rem 0.6rem 0rem 0rem;
+	display: flex;
+	background: var(--black);
+	height: 0;
+	transition: height 0.2s;
+	display: flex;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+}
+.update-popup form{
+/*	background: red;*/
+	display: flex;
+	flex-direction: row;
+	margin: 0rem 1rem 0rem 1rem;
+}
+.update-popup form input{
+	width: 20%;
+	outline: none;
+	margin-right: 1rem;
+	text-align: center;
+	font-weight: bold;
+	background: var(--white);
+	color: var(--black);
+	border: none;
+}
+.update-popup form input:first-child{
+	background: var(--black);
+	border: 1px solid var(--white);
+	color: var(--white);
+}
+.update-popup form input:last-child{
+	margin-right: 0rem;
+	border: 1px solid var(--white);
+	background: var(--black);
+	color: var(--white);
+	cursor: pointer;
 }

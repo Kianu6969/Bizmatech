@@ -24,15 +24,19 @@ for(let x = 0; x < updateBtn.length; x++){
 	updateBtn[x].addEventListener('click', function(){
 
 	if (toggle == false) {
-		updateBtn[x].textContent = 'close';
-		updateBtn[x].style.background = 'green';
-		update[x].style.display = 'flex';
+		updateBtn[x].textContent = 'Close';
+		updateBtn[x].style.background = '#F1F1F1';
+		updateBtn[x].style.color = '#4D455D';
+		updateBtn[x].style.fontWeight = 'bold';
+		updateBtn[x].style.border = '1px solid #4D455D';
+		update[x].style.height = '10vh';
 		toggle = true;
 	}
 	else{
-		updateBtn[x].textContent = 'update'
+		updateBtn[x].textContent = 'Update'
 		updateBtn[x].style.background = '#4D455D';
-		update[x].style.display = 'none';
+		updateBtn[x].style.color = '#F1F1F1';
+		update[x].style.height = '0vh';
 		toggle = false;
 	}
 	
