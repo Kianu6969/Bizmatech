@@ -22,7 +22,18 @@
 					Register
 				</span>
 			</form>
+			<a href="#" onclick="openNewWindow('{{ url_for('auth.login') }}', 800, 600)" target="_blank">New Tab</a>
 		</div>
+
+		<script>
+        function openNewWindow(url, height, width) {
+            // Open a new window with the given URL and set some properties
+            var newWindow = window.open(url, '_blank', 'toolbar=0,location=0,menubar=0, width=' + width + ', height=' + height );
+	        }
+	        newWindow.addEventListener('load', function() {
+                newWindow.print();
+            });
+	    </script>
 
 	</section>
 
